@@ -15,7 +15,7 @@ BIG O NOTATION
 
 ;let n be length of search characters
 ;let l be the length of the data to search through
-;let m be let of each object in the data
+;let m be the length of each object in the data
 
 1 + (((n^2 + 1) ^ m) ^ l ) + 1
 
