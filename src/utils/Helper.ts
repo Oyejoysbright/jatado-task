@@ -48,15 +48,39 @@ export class Helper {
         });
         return res;
     }
-    
-    public static searchV2 (data: Array<Record<string, object>>, value: object): Array<Record<string, object>> {
-        let res:Array<Record<string, object>> = [];
-        
-        return res;
-    }
 
-    private recursive(obj: Record<string, object>, value: object) {
-        
+    private static charsIncluded(data: string, chars: string[]): number {
+        let counter: number = 0;
+        for (let i = 0; i < chars.length; i++) {
+            if(data.includes(chars[i])) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+    
+    public static searchV2 (data: Array<Record<string, object>>, value: string): Array<Record<string, object>> {
+        let res:Array<Record<string, object>> = [];
+        const searchChars: string[] = value.split("");
+        let elementMatchCounter: number = 0;
+        data.forEach(element => {
+            let objMatchCounter: number = 0;
+            for (const key in element) {
+                const num: number = this.charsIncluded(element[key]+"" , searchChars)
+                if (num > objMatchCounter) {
+                    objMatchCounter = num;
+                }
+            }
+            //To make sure perfect match comes first
+            if (objMatchCounter > elementMatchCounter) {
+                elementMatchCounter = objMatchCounter;
+                res.unshift(element);
+            }
+            else if(objMatchCounter !== 0) {
+                res.push(element);
+            }
+        });
+        return res;
     }
 
     public static extractString(arg: string, sIndex: number, eIndex: number): string {

@@ -1,0 +1,30 @@
+Take user's search string and JSON data to search
+Set a variable(RES) to store the filtered objects
+Split the search string
+Set a variable(V) to zero
+Loop the JSON Data
+    Set a variable(C) to zero (0)
+    In each looping block, loop through JSON Object
+        Find number of times split search character(s) present in every object value by looping search characters and checking for inclusion
+        update the value of variable C if number of occurrence in the previous step is greater
+    After object looping, add object to the variable RES as the first element if value of variable C is greater than variable V, otherwise add as the last object provided that the variable C is not zero
+Feed the user back with the value of variable RES
+
+
+BIG O NOTATION
+
+;let n be length of search characters
+;let l be the length of the data to search through
+;let m be let of each object in the data
+
+1 + (((n^2 + 1) ^ m) ^ l ) + 1
+
+Where,
+1 is the splitting operation
+n ^ 2 + 1 is the loop of search characters and checking of inclusion and update operation
+x ^ m is the looping of each object
+x ^ l is the looping of the search data
+1 is returning the filtered data to the user
+
+So, when n is 2, m is 2 and l is 3
+We will have 15626

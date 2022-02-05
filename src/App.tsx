@@ -20,12 +20,11 @@ function App() {
 
   const checkFileCompatibility = (filePath: string) => {
     const ext: string = Helper.getFileExtension(filePath, 1);
-    alert(ext)
-    setState(prev => ({...prev, validationFlag: state.types.includes(ext.toUpperCase())}))
+    setState(prev => ({ ...prev, validationFlag: state.types.includes(ext.toUpperCase()) }))
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setState(prev => ({...prev, [e.target.name]: e.target.value}));
+    setState(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
     if (e.target.name === "file") {
       checkFileCompatibility(e.target.value);
@@ -46,9 +45,9 @@ function App() {
             {
               state.validationFlag !== null && (
                 <>
-                {
-                  state.validationFlag? <span color='green'>File Supported</span> : <span color='red'>File Not Supported</span>
-                }
+                  {
+                    state.validationFlag ? <span className='green'>File Supported</span> : <span className='red'>File Not Supported</span>
+                  }
                 </>
               )
             }

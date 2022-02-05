@@ -32,10 +32,10 @@ function SearchableSelect({ name = "", value = "", dataKey = "name", data = TEST
             setState({ ...state, dataList: data });
         }
         if (value !== state[name]) {
-            setState(prev => { return { ...prev, [name]: value, dataList: Helper.search(data, value) } });
+            setState(prev => { return { ...prev, [name]: value, dataList: Helper.searchV2(data, value) } });
         }
 
-    });
+    }, [data, name, state, value]);
 
     const getText = (obj = Object) => {
         let res = "";
@@ -59,7 +59,9 @@ function SearchableSelect({ name = "", value = "", dataKey = "name", data = TEST
 export default SearchableSelect
 
 const TEST_DATA = [
-    { id: 1, name: "Test 1", age: 5 },
-    { id: 2, name: "Test 2", age: 9 },
-    { id: 3, name: "Test 3", age: 15 },
+    { id: 1, name: "Ayomide Oyediran", age: 5 },
+    { id: 2, name: "Agboola Samuel", age: 9 },
+    { id: 3, name: "Peter Chukwu", age: 15 },
+    { id: 4, name: "Ojonugwa Oji", age: 15 },
+    { id: 5, name: "Rotimi Bolorunduro", age: 15 },
 ]

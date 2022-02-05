@@ -23,7 +23,7 @@ function Dropdown({contentType = DropContentType.standard, id, title, content, c
         if (thisStatus !== status) {
             setStatus(status);
         }
-    }, [status])
+    }, [status, thisStatus])
     
     switch (type) {
         case DropType.focus:
